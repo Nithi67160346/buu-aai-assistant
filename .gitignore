@@ -1,0 +1,50 @@
+# Python / environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# Credentials / local settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.ssh/
+
+# Generated index, OCR, logs and evaluation output
+*.sqlite3
+*.sqlite3-*
+*.db
+.aai_ocr_cache/
+*.log
+eval/results*.json
+bench*_results*.json
+bench_web_after*.json
+session_analysis.json
+
+# Backups / archives / model weights
+*.bak
+*.bak_*
+*.swp
+*~
+*_backup.py
+*.zip
+*.tar
+*.tar.gz
+*.gguf
+*.safetensors
+*.bin
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

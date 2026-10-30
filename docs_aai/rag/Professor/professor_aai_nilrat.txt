@@ -1,0 +1,45 @@
+อาจารย์นิลรัตน์ ก้านหยั่นทอง เป็นอาจารย์ประจำสาขาวิชาปัญญาประดิษฐ์ประยุกต์และเทคโนโลยีอัจฉริยะ (AAI) คณะวิทยาการสารสนเทศ มหาวิทยาลัยบูรพา มีห้องทำงานอยู่ที่ IF-912F อีเมล nilrat.ka@informatics.buu.ac.th มีความเชี่ยวชาญและสนใจด้าน Image Processing, Medical Image Processing, Machine Learning และ Computer Vision (หมายเหตุ: ในฐานข้อมูลระบุเฉพาะห้องทำงาน อีเมล ความเชี่ยวชาญ และผลงานวิจัย โดยไม่ได้ระบุวุฒิการศึกษา)
+ผลงานเผยแพร่
+ผลงานวิจัย / บทความวิชาการ
+
+นิลรัตน์ ก้านหยั่นทอง, อัฌณ์นุพนธ์ รอดทุกข์, ศรชัย อุดมธนาพงษ์, สุภาวดี ศรีคำดี, กฤษณะ ชินสาร,
+“การระบุร่องรอยการเกิดโรคต้อหินอย่างอัตโนมัติโดยใช้การวิเคราะห์แบบวงรี,”
+การประชุมวิชาการระดับชาติ ECTI-CARD ครั้งที่ 13, วันที่ 28–30 เมษายน 2564, ณ โรงแรมเฟอร์จูน ริเวอร์วิว จังหวัดนครพนม
+Kanyunthong, A. Rodtook, B. Jantarakongkul, and K. Chinnasarn,
+“Automated Glaucoma Lesion Detection using Ellipse Descent Analysis,”
+The 9th International Conference on Smart Media and Applications (SMA 2020), Ramada Plaza Jeju, Republic of Korea, pp. 1–5.
+Arbking, J., Yookwan, W., Kanyunthong, N., Panphotong, K., Chimthai, S., & Chinnasarn, K. (2025). TOI National Grader: A support system for the selection and preparation of Thailand Informatics Olympiad participants. In 2025 IEEE/ACIS 29th International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD) (pp. 479–484). IEEE. https://doi.org/10.1109/SNPD65828.2025.11253782
+Kanyunthong, N., Jirayusakul, A., Rodtook, A., Jantarakongkul, B., & Chinnasarn, K. (2020). Segmentation of retinal blood vessels based on adaptive interval top-hat filtering in heterogeneous environment optic disc image. In 2020 5th International Conference on Information Technology (InCIT) (pp. 162–166). IEEE. https://doi.org/10.1109/InCIT50588.2020.9310782
+Lojjanaakapong, A., Kanyunthong, N., Tansavetwong, S., & Yookwan, W. (2026a). AI-based fracture detection in musculoskeletal X-ray images with uncertainty-aware learning. In 2026 23rd International Conference on Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology (ECTI-CON). IEEE. https://doi.org/10.1109/ECTI-CON68836.2026.11608577
+Lojjanaakapong, A., Kanyunthong, N., Tansavetwong, S., & Yookwan, W. (2026b). Fracture detection in musculoskeletal X-rays using deep learning with uncertainty modeling. In 2026 23rd International Joint Conference on Computer Science and Software Engineering (JCSSE) (pp. 190–195). IEEE. https://doi.org/10.1109/JCSSE68839.2026.11596954
+Nontthanawut, S., Kanyunthong, N., Chaiyasoonthorn, S., & Yookwan, W. (2026). Multimodal dental lesion characterization using clinical dental images and SEM-EDX analysis with deep. In 2026 23rd International Conference on Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology (ECTI-CON). IEEE. https://doi.org/10.1109/ECTI-CON68836.2026.11608425
+Nontthanawut, S., Kanyunthong, N., Tansavetwong, S., & Yookwan, W. (2026). Integrated multimodal analysis of dental lesions using clinical images and SEM-EDX with deep neural networks. In 2026 23rd International Joint Conference on Computer Science and Software Engineering (JCSSE) (pp. 168–171). IEEE. https://doi.org/10.1109/JCSSE68839.2026.11597083
+Onuean, A., Kulkasem, P., Kanyunthong, N., Tansavetwong, S., Kunphruk, J., Thananchai, K., Madhyamapurush, C., & Chinnasarn, K. (2025). Towards eID authentication: Readiness assessment system for ThaID integration. In 2025 IEEE/ACIS 29th International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD) (pp. 391–396). IEEE. https://doi.org/10.1109/SNPD65828.2025.11252643
+Sakunwong, P., Kanyunthong, N., Tansavetwong, S., & Yookwan, W. (2026a). Micro-XRF-based enamel mineral analysis for early caries detection. In 2026 23rd International Joint Conference on Computer Science and Software Engineering (JCSSE) (pp. 172–177). IEEE. https://doi.org/10.1109/JCSSE68839.2026.11597077
+Sakunwong, P., Kanyunthong, N., Tansavetwong, S., & Yookwan, W. (2026b). Spatial mineral distribution analysis of tooth enamel using Micro-XRF and dental imaging for early caries. In 2026 23rd International Conference on Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology (ECTI-CON). IEEE. https://doi.org/10.1109/ECTI-CON68836.2026.11609040
+หัวหน้าโครงการ
+
+ชื่อโครงการ : โครงการจัดทำระบบเกรดเดอร์แห่งชาติ เพื่อการอบรมค่าย สอวน คอมพิวเตอร์
+ระยะเวลา : 6 เมษายน พ.ศ. 2569 – 31 มีนาคม พ.ศ. 2570
+
+ชื่อโครงการ : โครงการจัดสอบสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาอุตสาหกรรมดิจิทัล
+ระยะเวลา : 3 กุมภาพันธ์ – 29 สิงหาคม พ.ศ. 2569
+
+ชื่อโครงการ : โครงการ INNOVATION HUB @Informatics
+ระยะเวลา : 18 สิงหาคม พ.ศ. 2568
+ประวัิตโดยย่อ
+ประสบการณ์การทำงาน
+
+นักวิจัย คณะวิทยาการสารสนเทศ มหาวิทยาลัยบูรพา (ปัจจุบัน)
+ผู้ช่วยนักวิจัย ห้องปฏิบัติการ Knowledge and Smart Technology (2561–2567)
+คณะกรรมการจัดงานการประชุมวิชาการระดับนานาชาติ The 16th International Joint Conference on Computer Science and Software Engineering (JCSSE 2019)
+คณะกรรมการจัดงานการประชุมวิชาการระดับนานาชาติ The 12th International Conference on Knowledge and Smart Technology (KST 2020)
+คณะกรรมการจัดงานการประชุมวิชาการระดับนานาชาติ The 5th International Conference on Information Technology (InCIT 2020)
+คณะกรรมการจัดงานการประชุมวิชาการระดับชาติ NCIT 2020 ณ โรงแรม The Tide Resort บางแสน จังหวัดชลบุรี
+ผู้ช่วยนักวิจัย โครงการการตรวจหาและแบ่งส่วนของออพติกดิสก์และคัพในสภาพแวดล้อมที่มีความซับซ้อนสูงเพื่อการช่วยวินิจฉัยทางการแพทย์ ปี 2561
+ผู้ช่วยนักวิจัย โครงการการตรวจหาและแบ่งส่วนของออพติกดิสก์และคัพในสภาพแวดล้อมที่มีความซับซ้อนสูงเพื่อการช่วยวินิจฉัยทางการแพทย์ ปี 2562
+ผู้ช่วยนักวิจัย โครงการการระบุท่าทางผิดปกติของกระดูกสันหลังส่วนล่างจากภาพถ่ายรังสีเอกซ์โดยอัตโนมัติ ปี 2565
+ผู้ช่วยนักวิจัย โครงการการสร้างฐานข้อมูลภาพถ่ายรังสีของกระดูกสันหลังและพัฒนาเทคโนโลยีการวิเคราะห์ภาพอัตโนมัติ ปี 2567
+ประวัติการศึกษา
+วท.ม. (วิทยาการสารสนเทศ) มหาวิทยาลัยบูรพา
+วท.บ. (วิทยาการคอมพิวเตอร์) มหาวิทยาลัยบูรพา

@@ -1,0 +1,39 @@
+ดร.วัชรพงศ์ อยู่ขวัญ เป็นอาจารย์ประจำหลักสูตร AAI มีห้องทำงานอยู่ที่ห้อง IF-909E และ KST Lab IF-8R04 อีเมล wyookwan@informatics.buu.ac.th ประวัติการศึกษา: จบปริญญาเอก วศ.ด. (วิศวกรรมโทรคมนาคมและคอมพิวเตอร์) มหาวิทยาลัยเทคโนโลยีสุรนารี (มทส.) พ.ศ. 2565, ปริญญาโท วท.ม. (วิทยาการสารสนเทศ) มหาวิทยาลัยบูรพา พ.ศ. 2562 และปริญญาตรี วท.บ. (วิทยาการคอมพิวเตอร์) มหาวิทยาลัยบูรพา พ.ศ. 2559 มีความเชี่ยวชาญและสนใจด้าน Computer Vision, Computational Geometry, Image Processing, AI และ Wireless Visual Sensor Network
+ผลงานเผยแพร่
+ผลงานวิจัย:
+
+หัวหน้าโครงการ
+
+2566 การพัฒนาแพลตฟอร์มสำหรับสนับสนุนบริการงานประชุมวิชาการ แหล่งทุน เงินรายได้จากส่วนงาน งบประมาณ 200,000 คณะวิทยาการสารสนเทศ สำนักงานการศึกษา มหาวิทยาลัยบูรพา ชลบุรี
+ผู้ร่วมวิจัย
+
+2567 Constructing Spinal Radiography Data and Automatic Imaging Analysis Technology Development แหล่งทุน แหล่งทุนภายนอก งบประมาณ 806,410 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+2567 การทำนายแนวโน้มภาวะซึมเศร้าจากข้อความภาษาไทยด้วยเทคนิคการประมวลผลภาษาธรรมชาติ แหล่งทุน เงินรายได้จากส่วนงาน งบประมาณ 140,000 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+2566 รวบรวมชุดข้อมูล X-ray และพัฒนาอัลกอริทึมอัจฉริยะของเครื่องจักรเพื่อระบุความผิดปกติของกระดูกสันหลังส่วนเอว แหล่งทุน แหล่งทุนภายนอก งบประมาณ 0 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+2563 ระบบสารสนเทศเพื่อการปฏิบัติงานของนิสิตช่วยปฏิบัติงานวิชาการ คณะวิทยาการสารสนเทศ แหล่งทุน เงินรายได้จากส่วนงาน งบประมาณ 40,000 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+วารสารตีพิมพ์เผยแพร่:
+
+ระดับนานาชาติ
+
+Yookwan, W.; Limchareon, S.; Lee, S.-H.; Jang, J.-S.; Lee, D.; Chinnasarn, K. (2023). Coarse X-ray Lumbar Vertebrae Pose Localization and Registration Using Triangulation Correspondence. Processes, 11(1), 61.
+Ratanak Khoeun, Watcharaphong Yookwan, Ponlawat Chophuk, Annupan Rodtook, Krisana Chinnasarn. (2023). Emotion Recognition of Partial Face Using Star-Like Particle Polygon Estimation. IEEE Access, 2023(11), 87558 – 87570.
+Klinwichit, P., Yookwan, W., Limchareon, S., Chinnasarn, K., Jang, J.-S., Onuean, A. (2023). BUU-LSPINE: A Thai Open Lumbar Spine Dataset for Spondylolisthesis Detection. Applied Sciences, 13(15), 8646.
+บทความตีพิมพ์เผยแพร่:
+
+ระดับนานาชาติ
+
+Baha, K., Yookwan, W. (2024). Phonetic Reading and Lexical Classification (PRLC) System using Language Morphological Analysis Model. In 16th International Conference on Knowledge and Smart Technology (KST 2024) (pp.1-6)
+Yookwan, W., Chinnasarn, K., Sae-chueng, S. (2024). BUUCrosscheck: An Automated Curriculum Plagiarism Detection using Cross-Cosine Similarity. In 2024 – 16th International Conference on Knowledge and Smart Technology (pp.1-3)
+Sisomboon, W., Phakdee, N., Sameenoi, Y., Yookwan, W., Saengsai, A. (2023). A Framework for Bang Saen Safe Food Avenue Management System. In 2022 26th International Computer Science and Engineering Conference (ICSEC) (pp.134-139)
+Yookwan, W., Chinnasarn, K., Baha, K., Srikamdee, S., Onuean, A. (2023). Fundus Image Registration Based on Extremal Regions of Extremum Levels. In The 7th International Conference on Information Technology (InCIT 2023) (pp.1-5)
+Yookwan, Y, Sangrueng, J, Chinnasarn, C. (2022). Coarse X-Ray Lumbar Vertebrae Pose Localization Using Triangulation Correspondane In Asia Pacific Signal and Information Processing Association Annual Summit and Conference 2022 (pp.1-4)
+Onpans, J., Yookwan, W., Suttapakti, U., Sangrueng, J & Srikamdee, S. (2022). Intravascular Ultrasound Image Composite Segmentation using Ensemble Gabor-spatial Features In The 13th International Conference on ICT Convergence (pp.1499-1504)
+Watcharaphong Yookwan, Krisana Chinnasarn, (Senior Member, IEEE), Chakchai So-In, (Senior Member, IEEE), and Paramate Horkaew. (2022). Multimodal Fusion of Deeply Inferred Point Clouds for 3D Scene Reconstruction Using Cross-Entropy ICP. IEEE Access, 10(2022), 77123-77136.
+Onpans, W. Yookwan , and S. Srikamdee, ” Automated Media Segmentation in Intravascular Ultrasound Image using Geometric Principal Component Analysis” 18th International Conference on Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology (ECTI-CON 2021), Chaingmai, Thailand, 2021, pp. 1-5.
+Kulkasem, W. Yookwan, and K. Chinnasarn, “Body Composition Area Identification from Low-radiation X-Ray image using Ensemble Learning Model” The 9th International Conference on Smart Media and Applications (SMA 2020), Ramada Plaza Jeju, Jeju, Republic of Korea, pp. 1-5.
+W. Yookwan, K. Chinnasarn and B. Jantarakongkul, ” Automated Vertebrae Pose Estimation in Low-Radiation Image using Modified Gabor Filter and Ellipse Analysis,” 2018-5th International Conference on Advanced Informatics: Concepts, Theory and Applications (ICAICTA-2018), Krabi, Thailand, 2018, pp. 141-146.
+W. Yookwan, K. Chinnasarn and B. Jantarakongkul, “Region of interest of human lumbar spine segmentation using geometric triangular analysis,” 2018 International Workshop on Advanced Image Technology (IWAIT-2018), Chiang Mai, 2018
+ประวัติการศึกษา
+ปริญญาเอก วิศวกรรมศาสตร์ดุษฎีบัณฑิต วิศวกรรมโทรคมนาคมและคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีสุรนารี
+ปริญญาโท วิทยาศาสตรมหาบัณฑิต (วท.ม.) วิทยาการสารสนเทศ มหาวิทยาลัยบูรพา
+ปริญญาตรี วิทยาศาสตรบัณฑิต (วท.บ.) วิทยาการคอมพิวเตอร์  มหาวิทยาลัยบูรพา

@@ -1,0 +1,48 @@
+ผศ.ดร.พลวัต ช่อผูก เป็นผู้ช่วยศาสตราจารย์และประธานหลักสูตร AAI มีห้องทำงานอยู่ที่ห้อง IF-913F อีเมล ponlawat.ch@buu.ac.th ประวัติการศึกษา: จบปริญญาเอก วศ.ด. (เทคโนโลยีวิศวกรรมไฟฟ้าและสารสนเทศ) มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (มจธ.) พ.ศ. 2565, ปริญญาโท วศ.ม. (วิศวกรรมชีวการแพทย์) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.) พ.ศ. 2559 และปริญญาตรี วศ.บ. (วิศวกรรมอิเล็กทรอนิกส์) สจล. พ.ศ. 2557 มีความเชี่ยวชาญและสนใจด้าน Digital Image Processing, Machine Learning, Electronic Circuit Design และ IoT
+ผลงานที่เผยแพร่
+ผลงานวิจัย:
+ผู้ร่วมวิจัย
+
+2567 Constructing Spinal Radiography Data and Automatic Imaging Analysis Technology Development แหล่งทุน แหล่งทุนภายนอก งบประมาณ 806,410 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+2566 รวบรวมชุดข้อมูล X-ray และพัฒนาอัลกอริทึมอัจฉริยะของเครื่องจักรเพื่อระบุความผิดปกติของกระดูกสันหลังส่วนเอว แหล่งทุน แหล่งทุนภายนอก งบประมาณ 0 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+2565 การตรวจจับโรคกระดูกสันหลังส่วนเอวแบบอัตโนมัติโดยใช้เทคนิคการประมวลผลภาพ แหล่งทุน แหล่งทุนภายนอก งบประมาณ 868,581 คณะวิทยาการสารสนเทศ สำนักงานการศึกษา มหาวิทยาลัยบูรพา ชลบุรี
+2564 การตรวจจับความผิดปกติของการจัดแนวกระดูกสันหลังส่วนเอว แหล่งทุน แหล่งทุนภายนอก งบประมาณ 0 คณะวิทยาการสารสนเทศ สำนักงานการศึกษา มหาวิทยาลัยบูรพา ชลบุรี
+2563 ระบบสารสนเทศเพื่อการปฏิบัติงานของนิสิตช่วยปฏิบัติงานวิชาการ คณะวิทยาการสารสนเทศ แหล่งทุน เงินรายได้จากส่วนงาน งบประมาณ 40,000 คณะวิทยาการสารสนเทศ สำนักงานคณบดี มหาวิทยาลัยบูรพา ชลบุรี
+
+วารสารตีพิมพ์เผยแพร่:
+
+ระดับนานาชาติ
+
+Chophuk, P., Chinnasarn, K. (2024). Evolving Feature Selection: Synergistic Backward and Forward Deletion Method Utilizing Global Feature Importance. IEEE Access, 12, 88696-88714.
+Sunusi Bala Abdullahi, Zakariyya Abdullahi Bature, Ponlawat Chophuk, Auwal Muhammad. (2023). Sequence-wise multimodal biometric fingerprint and finger-vein recognition network (STMFPFV-Net). Intelligent Systems with Applications, 19(2023), 200256.
+Ratanak Khoeun, Watcharaphong Yookwan, Ponlawat Chophuk, Annupan Rodtook, Krisana Chinnasarn. (2023). Emotion Recognition of Partial Face Using Star-Like Particle Polygon Estimation. IEEE Access, 2023(11), 87558 – 87570.
+Ratanak Khoeun, Ponlawat Chophuk, and Krisana Chinnasarn. (2022). Emotion Recognition for Partial Faces Using a Feature Vector Technique. Sensors, 22(12), 4633.
+Ponlawat Chophuk, Kosin Chamnongthai and Krisana Chinnasarn. (2022). Backhand-Approach-Based American Sign Language Words Recognition Using Spatial-Temporal Body Parts and Hand Relationship Patterns. Sensors, 22(12), 4554.
+Chophuk, P., and Chamnongthai, K., “Backhand-View-Based Continuous-Signed-Letter Recognition Using a Rewound Video Sequence and the Previous Signed-Letter Information.” IEEE Access 9 (2021): 40187-40197.
+ระดับชาติ
+
+พลวัต ช่อผูก. (2567). เครื่องจ่ายยาอัตโนมัติเเละตรวจสอบความถูกต้องด้วยโมเดล YOLOv5. วารสารคอมพิวเตอร์และเทคโนโลยีสร้างสรรค์, 2, 45-60.
+ประวิทย์ บุญมี, พลวัต ช่อผูก. (2567). ระบบตรวจสอบสิ่งมีค่าของลูกค้าที่ลืมไว้ในร้านอาหารด้วยระบบ AI และกล้องเว็บแคม. วารสารนวัตกรรมวิทยาศาสตร์เพื่อการพัฒนาอย่างยั่งยืน, 5, 47-58.
+บทความตีพิมพ์:
+
+ระดับนานาชาติ
+
+Chophuk, P. (2024). Analyze and Predicting with Data Mining on Customer Churn Dataset. In 2024 International Electrical Engineering Congress (iEECON 2024) (pp.-)
+Siraphatwongkorn, A., Chophuk, P., Onuean, A. (2024). Autonomous Drive-Through System Using EasyOCR and Dobot. In 2024 IEEE International Symposium on Consumer Technology (pp.-)
+Chophuk, P. (2024). Comparative Evaluation of YOLOv5, YOLOv8, and TensorFlow for Optimal Model Selection in Durian Leaf Disease Detection via Mobile Application. In THE 34th INTERNATIONAL CONFERENCE ON INFORMATION MODELLING AND KNOWLEDGE BASES EJC2024 (pp.-)
+Chophuk, P., Boonmee, P. (2023). Theft Detection by Patterns of Walking Behaviorusing Motion-based Artificial Intelligence. In 2023 INTERNATIONAL WORKSHOP ON ADVANCED IMAGE TECHNOLOGY (IWAIT) (pp.-)
+Ponlawat Chophuk, Kosin Chamnongthai. (2021). Backhand-View-Based Continuous-Signed-Letter Recognition Using a Rewound Video Sequence and the Previous Signed-Letter Information. IEEE Access, 9(9), 40187-40197.
+สินธัช วิสุทธาธรรม, โกสินทร์ จำนงไทย, พลวัต ช่อผูก. (2564). การจำแนกท่ามวยไทยในวิดีโอโดยใช้รูปแบบการเปลี่ยนแปลงสถานะ. ในการประชุมการประชุมวิชาการระดับชาติ ECTI-CARD 2021 ครั้งที่ 13 (pp.-)
+Chophuk, P., Pattanaworapan, K., and Chamnongthai, K., 2019, “Consideration of a Selecting Frame of Finger-Spelled Words from Backhand View.” Asia-Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC).
+Chophuk, P., Pattanaworapan, K., and Chamnongthai, K., 2018, “Backhand-based video frame selection for finger alphabet recognition.” International Symposium on Multimedia and  Communication Technology (ISMAC2018).
+Chophuk, P., Pattanaworapan, K., and Chamnongthai, K., 2018, “Fist american sign language recognition using leap motion sensor.” International Workshop on Advanced Image Technology  (IWAIT).
+Chophuk, P., Chumpen, S., Tungjitkusolmun, S., & Phasukkit, P. “Hand postures for evaluating trigger finger using leap motion controller.” 2015 8 th Biomedical Engineering International Conference  (BMEiCON). IEEE.
+Chophuk, P., Chumpen, S., Tungjitkusolmun, S., & Phasukkit, P. “Simple ASL Alphabet using Leap Motion Controller” 2015 International Symposium on Multimedia and Communication Technology (ISMAC).
+Chophuk, P., Boonmee, P. (2023). Theft Detection by Patterns of Walking Behaviorusing Motion-based Artificial Intelligence. In 2023 INTERNATIONAL WORKSHOP ON ADVANCED IMAGE TECHNOLOGY (IWAIT) (pp.-)พลวัต ช่อผูก. (2564). การจำแนกท่ามวยไทยในวิดีโอโดยใช้รูปแบบการเปลี่ยนแปลงสถานะ. ในการประชุม- (pp.-)
+ระดับชาติ
+
+พลวัต ช่อผูก. (2564). การจำแนกท่ามวยไทยในวิดีโอโดยใช้รูปแบบการเปลี่ยนแปลงสถานะ. ในการประชุม- (pp.-)
+ประวัติการศึกษา:
+วศ.ด. (สาขาวิชาเทคโนโลยีวิศวกรรมไฟฟ้าและสารสนเทศ) มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+วศ.ม. (วิศวกรรมชีวการแพทย์)  สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.บ. (วิศวกรรมอิเล็กทรอนิกส์ )  สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง

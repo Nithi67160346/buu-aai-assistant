@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AAI BUU RAG Assistant | คณะวิทยาการสารสนเทศ ม.บูรพา</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-panel: #0f172a;
+      --bg-sidebar: #131d31;
+      --bg-card: #1e293b;
+      --bg-input: #1e293b;
+      --bg-user-bubble: #0284c7;
+      --text-user: #ffffff;
+      --bg-assistant-bubble: #1e293b;
+      --border-color: #334155;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --chip-bg: rgba(56, 189, 248, 0.1);
+      --chip-border: rgba(56, 189, 248, 0.25);
+      --chip-text: #7dd3fc;
+      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="light"] {
+      --bg-main: #f8fafc;
+      --bg-panel: #ffffff;
+      --bg-sidebar: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-input: #ffffff;
+      --bg-user-bubble: #0284c7;
+      --text-user: #ffffff;
+      --bg-assistant-bubble: #ffffff;
+      --border-color: #e2e8f0;
+      --border-light: rgba(0, 0, 0, 0.06);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-glow: rgba(2, 132, 199, 0.12);
+      --chip-bg: rgba(2, 132, 199, 0.08);
+      --chip-border: rgba(2, 132, 199, 0.2);
+      --chip-text: #0369a1;
+      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+      transition: background-color 0.25s, color 0.25s;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.3s;
+      z-index: 100;
+    }
+
+    .sidebar.collapsed {
+      margin-left: -280px;
+    }
+
+    .sidebar-header {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .new-chat-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--accent-glow);
+      transition: transform 0.15s, opacity 0.15s;
+    }
+
+    .new-chat-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      padding-left: 6px;
+    }
+
+    /* Quick Prompt Pills in Sidebar */
+    .pills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pill-btn {
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s;
+    }
+
+    .pill-btn:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--text-primary);
+      transform: translateX(2px);
+    }
+
+    .pill-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      stroke: var(--accent);
+    }
+
+    /* Chat History */
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .history-item {
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .history-item:hover, .history-item.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    .history-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .history-delete {
+      opacity: 0;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px;
+    }
+
+    .history-item:hover .history-delete {
+      opacity: 1;
+    }
+
+    .sidebar-footer {
+      padding: 14px 16px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    /* Main Container */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Top Navigation */
+    .topbar {
+      height: 60px;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-panel);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--accent);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-edge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Chat Messages Container */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-inner {
+      width: 100%;
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Welcome / Hero State */
+    .welcome-container {
+      margin: auto;
+      text-align: center;
+      max-width: 600px;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .welcome-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .welcome-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .welcome-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .welcome-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .welcome-card {
+      padding: 14px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .welcome-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Message Bubbles */
+    .message-row {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .message-row.user {
+      justify-content: flex-end;
+    }
+
+    .msg-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .msg-avatar.assistant {
+      background: linear-gradient(135deg, #0f172a, #0284c7);
+      border: 1px solid var(--accent);
+      color: #38bdf8;
+    }
+
+    .msg-avatar.user {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    .message-body {
+      max-width: 82%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .bubble {
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      word-break: break-word;
+      position: relative;
+    }
+
+    .message-row.user .bubble {
+      background: var(--bg-user-bubble);
+      color: var(--text-user);
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-row.assistant .bubble {
+      background: var(--bg-assistant-bubble);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      border-bottom-left-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Markdown inside assistant */
+    .bubble p {
+      margin-bottom: 8px;
+    }
+    .bubble p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bubble strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .bubble ul, .bubble ol {
+      margin-left: 20px;
+      margin-bottom: 8px;
+    }
+
+    .bubble li {
+      margin-bottom: 4px;
+    }
+
+    .bubble pre {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      margin: 8px 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .bubble code {
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      padding: 2px 5px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* Streaming Blinking Cursor */
+    .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 15px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 0.9s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Message Meta & Actions */
+    .msg-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .copy-btn:hover {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--accent);
+    }
+
+    .copy-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 2px 6px;
+      background: var(--bg-panel);
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Sources / Citations */
+    .sources-wrap {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sources-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .sources-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .source-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      color: var(--chip-text);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .source-chip svg {
+      width: 11px;
+      height: 11px;
+    }
+
+    /* Input Area */
+    .input-container {
+      padding: 16px 20px 20px 20px;
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .input-box {
+      width: 100%;
+      max-width: 820px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-box:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .chat-textarea {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14.5px;
+      line-height: 1.5;
+      resize: none;
+      max-height: 160px;
+      min-height: 24px;
+      outline: none;
+    }
+
+    .chat-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .send-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+
+    .send-btn:hover:not(:disabled) {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+      color: #ffffff;
+    }
+
+    .send-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .input-disclaimer {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        height: 100vh;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      }
+      .sidebar.collapsed {
+        transform: translateX(-100%);
+        margin-left: 0;
+      }
+      .welcome-cards {
+        grid-template-columns: 1fr;
+      }
+      .message-body {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="new-chat-btn" id="newChatBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        การสนทนาใหม่
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+      <!-- Quick Prompt Pills -->
+      <div>
+        <div class="section-title">คำถามยอดนิยม</div>
+        <div class="pills-grid">
+          <button class="pill-btn" data-query="AAI คืออะไร">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            AAI คืออะไร
+          </button>
+          <button class="pill-btn" data-query="เกณฑ์ TCAS สาขา AAI">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            เกณฑ์ TCAS รอบ 1 และ 3
+          </button>
+          <button class="pill-btn" data-query="ชั่วโมงสหกิจศึกษา 42 ชม. เก็บอย่างไร">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ชั่วโมงสหกิจ 42 ชม.
+          </button>
+          <button class="pill-btn" data-query="รายชื่ออาจารย์ประจำสาขา AAI ทั้ง 6 ท่าน">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            รายชื่ออาจารย์ทั้ง 6 ท่าน
+          </button>
+          <button class="pill-btn" data-query="ค่าเทอมและโครงสร้างหลักสูตร AAI">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            ค่าเทอมและโครงสร้าง 120 นก.
+          </button>
+          <button class="pill-btn" data-query="สีประจำคณะวิทยาการสารสนเทศ">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/></svg>
+            สีประจำคณะ
+          </button>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div>
+        <div class="section-title">ประวัติการถาม</div>
+        <div class="history-list" id="historyList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="status-indicator">
+        <div class="status-dot"></div>
+        <span>Edge AI Active</span>
+      </div>
+      <span id="passagesCount">1,648 passages</span>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn" id="toggleSidebar" title="สลับแถบข้าง">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="brand">
+          <div class="brand-logo">AAI</div>
+          <div class="brand-info">
+            <div class="brand-name">
+              BUU Informatics RAG
+              <span class="badge-edge">RPi4 Fast</span>
+            </div>
+            <div class="brand-sub">คณะวิทยาการสารสนเทศ มหาวิทยาลัยบูรพา</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Theme Toggle -->
+        <button class="icon-btn" id="themeToggle" title="เปลี่ยนธีม">
+          <svg id="themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Chat Messages -->
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-inner" id="chatInner">
+        <!-- Welcome Hero View (when empty) -->
+        <div class="welcome-container" id="welcomeView">
+          <div class="welcome-avatar">AI</div>
+          <h2 class="welcome-title">สวัสดีครับ มีอะไรให้ผมช่วยเกี่ยวกับ AAI ไหมครับ?</h2>
+          <p class="welcome-desc">
+            ระบบ RAG ผู้ช่วยตอบคำถามประจำสาขาวิชาปัญญาประดิษฐ์ประยุกต์และเทคโนโลยีอัจฉริยะ (AAI) ประมวลผลแบบ Edge AI ปลอดภัยและรวดเร็วบน Raspberry Pi 4
+          </p>
+          <div class="welcome-cards">
+            <div class="welcome-card" data-query="AAI คืออะไร และเรียนอะไรบ้าง">
+              <div class="card-title">💡 AAI คืออะไร และเรียนอะไรบ้าง?</div>
+              <div class="card-subtitle">ข้อมูลภาพรวมหลักสูตรและทักษะที่จะได้รับ</div>
+            </div>
+            <div class="welcome-card" data-query="เกณฑ์การรับสมัคร TCAS สาขา AAI">
+              <div class="card-title">📋 เกณฑ์การรับสมัคร TCAS</div>
+              <div class="card-subtitle">รอบ 1 Portfolio และรอบ 3 Admission</div>
+            </div>
+            <div class="welcome-card" data-query="เงื่อนไขและชั่วโมงสหกิจศึกษา 42 ชม. เก็บอย่างไร">
+              <div class="card-title">💼 ชั่วโมงสหกิจ 42 ชม.</div>
+              <div class="card-subtitle">การอบรม BUU MOOC และเงื่อนไขตามประกาศ 0080/2568</div>
+            </div>
+            <div class="welcome-card" data-query="อาจารย์ประจำหลักสูตร AAI มีใครบ้าง">
+              <div class="card-title">👨‍🏫 คณาจารย์ประจำสาขา</div>
+              <div class="card-subtitle">รายชื่อ ห้องทำงาน และประวัติการศึกษาของอาจารย์</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Input -->
+    <div class="input-container">
+      <div class="input-box">
+        <textarea
+          id="chatInput"
+          class="chat-textarea"
+          rows="1"
+          placeholder="พิมพ์คำถามเกี่ยวกับหลักสูตร AAI ม.บูรพา ที่นี่... (กด Enter เพื่อส่ง)"
+        ></textarea>
+        <button id="sendBtn" class="send-btn" title="ส่งคำถาม" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <div class="input-disclaimer">
+        AAI BUU Assistant RAG Engine • Running on Raspberry Pi 4 Model B (Broadcom BCM2711) • Hybrid Fact-Cards (0.15s) + Qwen 1.7B
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // State
+    let currentSessionId = 'session_' + Date.now();
+    let isGenerating = false;
+    let chatsHistory = JSON.parse(localStorage.getItem('buu_aai_chats') || '[]');
+
+    // Elements
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatInner = document.getElementById('chatInner');
+    const chatMessages = document.getElementById('chatMessages');
+    const welcomeView = document.getElementById('welcomeView');
+    const newChatBtn = document.getElementById('newChatBtn');
+    const historyList = document.getElementById('historyList');
+    const toggleSidebar = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIconSun = document.getElementById('themeIconSun');
+    const themeIconMoon = document.getElementById('themeIconMoon');
+
+    // Theme Setup
+    const savedTheme = localStorage.getItem('buu_theme') || 'dark';
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('buu_theme', theme);
+      if (theme === 'dark') {
+        themeIconSun.style.display = 'block';
+        themeIconMoon.style.display = 'none';
+      } else {
+        themeIconSun.style.display = 'none';
+        themeIconMoon.style.display = 'block';
+      }
+    }
+
+    // Sidebar Toggle
+    toggleSidebar.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Auto resize textarea
+    chatInput.addEventListener('input', () => {
+      chatInput.style.height = 'auto';
+      chatInput.style.height = Math.min(chatInput.scrollHeight, 160) + 'px';
+      sendBtn.disabled = !chatInput.value.trim() || isGenerating;
+    });
+
+    // Enter to submit
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (!sendBtn.disabled) {
+          sendMessage(chatInput.value.trim());
+        }
+      }
+    });
+
+    sendBtn.addEventListener('click', () => {
+      if (!sendBtn.disabled) {
+        sendMessage(chatInput.value.trim());
+      }
+    });
+
+    // Quick Prompt Pills & Welcome Cards
+    document.querySelectorAll('.pill-btn, .welcome-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const query = btn.getAttribute('data-query');
+        if (query && !isGenerating) {
+          sendMessage(query);
+          if (window.innerWidth <= 768) {
+            sidebar.classList.add('collapsed');
+          }
+        }
+      });
+    });
+
+    // New Chat
+    newChatBtn.addEventListener('click', () => {
+      startNewChat();
+    });
+
+    function startNewChat() {
+      if (isGenerating) return;
+      currentSessionId = 'session_' + Date.now();
+      chatInner.innerHTML = '';
+      chatInner.appendChild(welcomeView);
+      welcomeView.style.display = 'flex';
+      chatInput.value = '';
+      chatInput.style.height = 'auto';
+      sendBtn.disabled = true;
+      renderHistory();
+      fetch('/api/chat/reset', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({session_id: currentSessionId})
+      }).catch(console.error);
+    }
+
+    // Markdown Parser (Marked or fallback)
+    function parseMarkdown(text) {
+      if (window.marked && window.marked.parse) {
+        return window.marked.parse(text);
+      }
+      let escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      escaped = escaped.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+      escaped = escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
+      escaped = escaped.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+      escaped = escaped.replace(/\n/g, '<br>');
+      return escaped;
+    }
+
+    // Send Message & Stream Response
+    async function sendMessage(text) {
+      if (!text || isGenerating) return;
+
+      if (welcomeView.style.display !== 'none') {
+        welcomeView.style.display = 'none';
+      }
+
+      // Append User Bubble
+      appendMessage('user', text);
+      chatInput.value = '';
+      chatInput.style.height = 'auto';
+      sendBtn.disabled = true;
+      isGenerating = true;
+
+      // Update History Title
+      saveHistory(text);
+
+      // Create Assistant Bubble with Streaming Cursor
+      const assistantId = 'assistant_' + Date.now();
+      const assistantContainer = createAssistantPlaceholder(assistantId);
+      chatInner.appendChild(assistantContainer);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      let fullText = '';
+      let sources = [];
+      let timings = null;
+
+      try {
+        const response = await fetch('/api/chat/stream', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: text, session_id: currentSessionId })
+        });
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop(); // save remainder
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('data: ')) {
+              try {
+                const event = JSON.parse(trimmed.slice(6));
+                if (event.type === 'token') {
+                  fullText += event.content;
+                  updateAssistantBubble(assistantId, fullText, true);
+                } else if (event.type === 'sources') {
+                  sources = event.sources || [];
+                } else if (event.type === 'done') {
+                  timings = event.timings || {};
+                }
+              } catch (e) {
+                console.error("JSON parse error:", e, trimmed);
+              }
+            }
+          }
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Finalize Assistant Bubble
+        finalizeAssistantBubble(assistantId, fullText, sources, timings);
+
+      } catch (err) {
+        console.error("Chat error:", err);
+        updateAssistantBubble(assistantId, fullText + "\n\n*เกิดข้อผิดพลาดในการเชื่อมต่อ*", false);
+      } finally {
+        isGenerating = false;
+        sendBtn.disabled = !chatInput.value.trim();
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    }
+
+    // Append User Bubble
+    function appendMessage(role, text) {
+      const row = document.createElement('div');
+      row.className = `message-row ${role}`;
+      row.innerHTML = `
+        <div class="message-body">
+          <div class="bubble">${escapeHtml(text)}</div>
+        </div>
+      `;
+      chatInner.appendChild(row);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Create Assistant Bubble Element
+    function createAssistantPlaceholder(id) {
+      const row = document.createElement('div');
+      row.className = 'message-row assistant';
+      row.id = id;
+      row.innerHTML = `
+        <div class="msg-avatar assistant">AI</div>
+        <div class="message-body">
+          <div class="bubble" id="${id}_bubble">
+            <span class="cursor"></span>
+          </div>
+          <div class="msg-actions" id="${id}_actions" style="display:none;"></div>
+          <div class="sources-wrap" id="${id}_sources" style="display:none;"></div>
+        </div>
+      `;
+      return row;
+    }
+
+    // Update Assistant Bubble while streaming
+    function updateAssistantBubble(id, text, isStreaming) {
+      const bubble = document.getElementById(`${id}_bubble`);
+      if (!bubble) return;
+      const html = parseMarkdown(text);
+      bubble.innerHTML = html + (isStreaming ? '<span class="cursor"></span>' : '');
+    }
+
+    // Finalize Assistant Bubble
+    function finalizeAssistantBubble(id, text, sources, timings) {
+      const bubble = document.getElementById(`${id}_bubble`);
+      if (bubble) {
+        bubble.innerHTML = parseMarkdown(text);
+      }
+
+      const actions = document.getElementById(`${id}_actions`);
+      if (actions) {
+        actions.style.display = 'flex';
+        let statText = '⚡ สำเร็จ';
+        if (timings && timings.total) {
+          statText = `⚡ รวม ${timings.total}s | ค้นหา ${timings.search || 0}s | LLM ${timings.llm || 0}s`;
+        }
+        actions.innerHTML = `
+          <button class="copy-btn" onclick="copyText('${escapeAttr(text)}', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            คัดลอก
+          </button>
+          <span class="stat-badge">${statText}</span>
+        `;
+      }
+
+      const sourcesWrap = document.getElementById(`${id}_sources`);
+      if (sourcesWrap && sources && sources.length > 0) {
+        sourcesWrap.style.display = 'flex';
+        const chipsHtml = sources.map((s, idx) => {
+          const pg = s.page ? ` (หน้า ${s.page})` : '';
+          return `<div class="source-chip" title="${escapeAttr(s.source)}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            [${idx+1}] ${escapeHtml(s.source)}${pg}
+          </div>`;
+        }).join('');
+
+        sourcesWrap.innerHTML = `
+          <div class="sources-title">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            เอกสารอ้างอิงที่ค้นพบ:
+          </div>
+          <div class="sources-chips">${chipsHtml}</div>
+        `;
+      }
+    }
+
+    // Copy to clipboard helper
+    window.copyText = function(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> คัดลอกแล้ว`;
+        setTimeout(() => {
+          btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> คัดลอก`;
+        }, 2000);
+      });
+    };
+
+    // Chat History Management
+    function saveHistory(firstQuery) {
+      const existing = chatsHistory.find(c => c.id === currentSessionId);
+      if (!existing) {
+        chatsHistory.unshift({
+          id: currentSessionId,
+          title: firstQuery.slice(0, 32),
+          time: Date.now()
+        });
+        localStorage.setItem('buu_aai_chats', JSON.stringify(chatsHistory.slice(0, 20)));
+        renderHistory();
+      }
+    }
+
+    function renderHistory() {
+      historyList.innerHTML = '';
+      chatsHistory.forEach(item => {
+        const div = document.createElement('div');
+        div.className = `history-item ${item.id === currentSessionId ? 'active' : ''}`;
+        div.innerHTML = `
+          <span class="history-title" title="${escapeAttr(item.title)}">${escapeHtml(item.title)}</span>
+          <button class="history-delete" title="ลบ" onclick="deleteHistory('${item.id}', event)">✕</button>
+        `;
+        div.addEventListener('click', (e) => {
+          if (!e.target.classList.contains('history-delete')) {
+            switchHistory(item.id);
+          }
+        });
+        historyList.appendChild(div);
+      });
+    }
+
+    window.deleteHistory = function(id, e) {
+      e.stopPropagation();
+      chatsHistory = chatsHistory.filter(c => c.id !== id);
+      localStorage.setItem('buu_aai_chats', JSON.stringify(chatsHistory));
+      renderHistory();
+      if (id === currentSessionId) {
+        startNewChat();
+      }
+    };
+
+    function switchHistory(id) {
+      if (id === currentSessionId || isGenerating) return;
+      currentSessionId = id;
+      chatInner.innerHTML = '';
+      chatInner.appendChild(welcomeView);
+      welcomeView.style.display = 'none';
+      appendMessage('assistant', `สลับมายังการสนทนา "${chatsHistory.find(c=>c.id===id)?.title || ''}" แล้วครับ สามารถพิมพ์ถามต่อได้ทันที`);
+      renderHistory();
+    }
+
+    // Escape helpers
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function escapeAttr(str) {
+      return str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    // Initial render
+    renderHistory();
+
+    // Check status
+    fetch('/api/status')
+      .then(res => res.json())
+      .then(data => {
+        if (data.passages) {
+          document.getElementById('passagesCount').textContent = `${data.passages.toLocaleString()} passages`;
+        }
+      })
+      .catch(console.error);
+
+  </script>
+</body>
+</html>

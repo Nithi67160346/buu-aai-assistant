@@ -1,0 +1,9 @@
+{
+  "app.py": "d29a2e9ea09fa2d85edbca8bcc7ae293e1aadef2510d1cd74c523a57fe3a1868",
+  "rag_pi4.py": "bea1a7ef002066bea300ae4afc6c59dfe1f70b6589c72ab87f2d691e20a9fbb3",
+  "rag_pi4_chat_v3_1.py": "e69b84cac5d6e994ae57c695c3882e23e082967607eff638e7c5d3712455be99",
+  "hybrid_engine.py": "666424af06d15fb79bf348adedfd27a17b3d78e6a176b55e77c44bb62478b156",
+  "data/fact_cards_embedded.json": "d27239c2e8fbb522b8e7d7510a4534969d56f22b722f42cf17bfeeab75204df2",
+  "data/fact_cards.json": "dc5f00e46a44cf5853a6016d20607097fc248a0844ca270da49911e9cb89fdb2",
+  "templates/index.html": "cd8621a1093508afae708152550b27838902abb42d8ec7ff3d3b2cc277749299"
+}
